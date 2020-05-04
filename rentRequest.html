@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TrojanRent</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index_style.css') }}">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="#" id="TroganRent">TrojanRent</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+  </div>
+  
+</nav>
+ -->
+
+  <div class="container" style="width: 55%; align-content: center;">
+    <div class="row">
+      <div class="col-lg-10 col-xl-9 mx-auto" >
+        <div class="card card-signin flex-row my-5" >
+          <!-- <div class="card-img-left d-none d-md-flex">
+             Background image for card set in CSS!
+          </div>  -->
+          <!-- <div style="width: 45%">
+            
+          </div> -->
+          <div class="card-body">
+            <h5 class="card-title text-center">Looking for House</h5>
+            <form class="form-signin">
+              <div class="form-label-group">
+                    <!-- <div style="width: 50%"> -->
+                      <input type="text" id="contactInfo" class="form-control" placeholder="Email address" required>
+                      <label for="contactInfo">Contact Info</label>
+                    <!-- </div> -->
+              </div>
+
+              <div class="form-label-group">
+                <input type="value" id="rentFee" class="form-control" placeholder="Expected" required autofocus>
+                <label for="rentFee">Expected fee</label>
+              </div>
+
+              <div class="row">
+                
+                  <div class="col-sm">
+                    <div class="form-label-group">
+                      <input type="month" id="startTime" class="form-control" placeholder="Email address" required>
+                      <label for="startTime">Start Time</label>
+                    </div>
+                  </div>
+
+                  <div class="col-sm">
+                      <div class="form-label-group">
+                        <input type="month" id="endTime" class="form-control" placeholder="Email address" required>
+                        <label for="endTime">End Time</label>
+                      </div>
+                    
+                  </div>
+              </div>
+
+              <!-- <p class="notice">
+              	<i class="fa fa-exclamation-triangle"></i>
+              	<em>Only education email address is allowed to register</em>
+              </p>
+              
+              <hr> -->
+
+              <div class="form-label-group">
+                <input type="text"  id="requirement" class="form-control" placeholder="Password"  style="height: 200px" required>
+                <label for="requirement">Requirement</label>
+              </div>
+              
+             
+
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" id="postBnt">Post</button>
+              <a class="d-block text-center mt-2 small" href="http://localhost:5000/index" id="returnLink">Return</a>
+              <!-- <hr class="my-4">
+              <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign up with Google</button>
+              <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign up with Facebook</button> -->
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<script>
+  jQuery(document).ready(function(){
+    $("#postBnt").on("click", function(){
+      var contactInfo = $("#contactInfo").val();
+      var rentFee = $("#rentFee").val();
+      var startTime = $("#startTime").val();
+      var endTime = $("#endTime").val();
+      var requirement = $("#requirement").val();
+
+      // var data = {
+      //     "contactInfo": contactInfo,
+      //     "rentFee": rentFee,
+      //     "startTime": startTime,
+      //     "endTime": endTime
+      //   };
+        
+      // console.log(data);
+
+      // alert("hhh");
+
+  
+
+      $.ajax({
+        type: "POST",
+        contentType: "application/x-www-form-urlencoded",
+        url: "http://localhost:5000/rentrequest",
+        data : {
+          "contactInfo": contactInfo,
+          "rentFee": rentFee,
+          "startTime": startTime,
+          "endTime": endTime,
+          "requirement": requirement
+        },
+        xhrFields: {withCredentials: true},
+        success: function(data){
+          //window.location.href = "#";
+          window.location.href = "http://localhost:5000/index"
+        },
+        error: function(data){
+          alert("failed");
+        }
+      });
+      return false;
+    });
+  });
+</script>
+
+
+
+
+
+</body>
+
+
+
+
+
+</body>
+</html>

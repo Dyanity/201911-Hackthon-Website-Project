@@ -1,0 +1,135 @@
+body {
+	font-family: 'Raleway', sans-serif;
+	color: #6f12cc;
+}
+
+#navigation {
+	color: white;
+}
+
+#TrojanRent {
+	color: white;
+}
+
+#map {
+        height: 100%;
+        padding: 0.2em;
+      }
+
+#map-container{
+	width: 80%;
+	height: 80%
+
+}
+
+#filter-label{
+	color: gray;
+}
+
+.row{
+	padding-top: 20px;
+}
+
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 15px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 10px; /* Set a specific slider handle width */
+  height: 15px; /* Slider handle height */
+  background: #6f12cc; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 15px; /* Slider handle height */
+  background: #6f12cc; /*#4CAF50;  Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.info-card{
+  color: gray;
+  /*background: gray; rgba(111, 18, 204, 0.4);*/
+  border-radius: 5px;
+  height: 25%;
+  width: 100%;
+  /*border: 1px solid blue;*/
+  box-shadow: 0 4px 8px 0 rgba(0,0,0, 0.2), 0 6px 20px 0 rgba(0,0,0, 0.19);
+  margin-bottom: 15px;
+  /*float: left;*/
+  padding: 5%;
+
+
+}
+.info-card-img{
+	width: 150px;
+    height: 150px;
+    float: left;
+    margin-right: 30px;
+}
+
+img{
+	
+	height: 100%;
+	width: 100%
+}
+
+.desc {
+	margin-left: 20px;
+	/*float: right;*/
+}
+
+.price{
+	color: #6f12cc;
+	font-weight: 600;
+	font-size: 20px;
+}
+
+
+
+
+.visible-scrollbar, .invisible-scrollbar, .mostly-customized-scrollbar {
+  display: block;
+  width: 10em;
+  overflow: auto;
+  height: 2em;
+}
+
+.invisible-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Demonstrate a "mostly customized" scrollbar
+ * (won't be visible otherwise if width/height is specified) */
+.mostly-customized-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+  background-color: #aaa; /* or add it to the track */
+}
+
+/* Add a thumb */
+.mostly-customized-scrollbar::-webkit-scrollbar-thumb {
+    background: #000; 
+}

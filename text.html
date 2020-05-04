@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RentSC</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map.*/
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" type="text/css" href="index_style.css"> -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+  <!-- navigation bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#" id="TroganRent">TrojanRent</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+    </div> 
+  </nav>
+
+  
+  
+
+  
+  <div class="container" style="width: 100%; height:100%">
+
+    <!-- filter -->
+    <div class="row">
+      <form>
+        <div class="form-row" style="padding-left: 10px">
+          
+          <div class="col-1">
+            <!-- <label class="filter-label">hhhh</label> -->
+            <select class="custom-select" id="roomType">
+              <option selected value="">Type</option>
+              <option value="1">Apartment</option>
+              <option value="2">House</option>
+              <option value="3">Both</option>
+            </select>
+          </div>
+
+          <div class="col-2">
+            <select class="custom-select" id="distance">
+              <option selected value="">Distance</option>
+              <option value="1"> &lt; 1 mile </option>
+              <option value="2">1 mile ~ 2 miles</option>
+              <option value="3">2 mile ~ 3 miles</option>
+              <option value="4">3 mile ~ 4 miles</option>
+              <option value="5">&gt; 3 miles</option>
+            </select>
+          </div>
+          <!-- <div class="col-2">
+            <input type="text" class="form-control" placeholder="RentFee" id="rentFee">
+          </div> -->
+          <div class="col-2">
+            <input type="month" class="form-control" placeholder="StartDate" id="startDate">
+          </div>
+          <div class="col-2">
+            <input type="month" class="form-control" placeholder="EndDate" id="endDate">
+          </div>
+          <div class="col-2 slidecontainer">
+            <input type="range" class="slider" min="500" max="3000" value="1500" placeholder="Rent Fee" id="rentFee">
+            <p style="color: gray; font-size: 0.8em;">rentFee: <strong><span id="demo"></span></strong></p>
+          </div>
+
+          <div class="col-2">
+            <input type="text" class="form-control" placeholder="Search" id="search">
+          </div>
+
+          <div class="col-1">
+            <button type="submit" class="btn btn-primary" id="filterBnt">Search</button>
+          </div>
+          
+        </div>
+      </form>
+    </div>
+    
+    
+    <div class="row" style="width: 100%; height:100%">
+      <!-- google map -->
+      <div class="col-6" id="map-container" style="padding: 0.2em;">
+        <div id="map"></div>
+      </div>
+
+      <div class="col-1" id="map-container" style="padding: 0.2em;">
+        
+      </div>
+
+      <div class="col-5" id="map-container" id="info" style="padding: 0.2em;">
+        
+      </div>
+
+    </div>
+  </div>
+
+
+  
+   
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtdyqvL0MfZgy1aMaPcp_rCFUrUpXJTU8&callback=initMap" async defer></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+
+  <!-- slide bar -->
+  <script>
+    var slider = document.getElementById("rentFee");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value; // Display the default slider value
+
+    // Update the current slider value (each time you drag the slider handle)
+    slider.oninput = function() {
+      output.innerHTML = this.value;
+    }
+  </script>
+
+
+  <!-- post to server -->
+  <script>
+  jQuery(document).ready(function(){
+    $("#filterBnt").on("click", function(){
+      var search = $("#search").val();
+      var roomType = $("#roomType").val();
+      var rentFee = $("#rentFee").val();
+      var startDate = $("#startDate").val();
+      var endDate = $("#endDate").val();
+      var distance = $("#distance").val();
+
+      data = {
+          "search": search,
+          "roomType": roomType,
+          "rentFee": rentFee,
+          "startDate": startDate,
+          "endDate": endDate,
+          "distance": distance
+        };
+
+      console.log(data);
+
+      $.ajax({
+        type: "POST",
+        contentType: "application/x-www-form-urlencoded",
+        url: "http://localhost:5000/index",
+        data : {
+          "search": search,
+          "roomType": roomType,
+          "rentFee": rentFee,
+          "startDate": startDate,
+          "endDate": endDate,
+          "distance": distance
+        },
+        xhrFields: {withCredentials: true},
+        success: function(data){
+          window.location.href = "http://localhost:5000/index"
+        },
+        error: function(data){
+          alert("failed");
+        }
+      });
+      return false;
+    });
+  });
+  </script>
+
+
+  
+  <!-- initGoogleMap -->
+  <script>
+      // Note: This example requires that you consent to location sharing when
+      // prompted by your browser. If you see the error "The Geolocation service
+      // failed.", it means you probably did not give permission for the browser to
+      // locate you.
+      var map, infoWindow;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 5
+        });
+        infoWindow = new google.maps.InfoWindow;
+
+               var points = JSON.parse('{{ points|safe }}');                           
+         var marker;                                                             
+
+         for (var i = 0; i < points.length; i++) {                               
+           marker = new google.maps.Marker({                                   
+             position: new google.maps.LatLng(points[i].lat, points[i].lng),   
+             map: map                                                          
+           });
+
+           console.log(points[i]);
+
+          var dom = "<div class='info-card'> <div class='info-card-img'> <img src='" + points[i].imgUrl + "'> </div> <p class='price'>" + points[i].rentFee + "</p> <p class='desc'>" + points[i].description + "</p> <p class='renttime'>" + points[i].startime + " ~ " + points[i].endtime + "</p> <p class='contact'>" + points[i].contactInfo + "</p> </div>";
+
+          console.log(dom);
+
+          //$("#info").append(dom);  
+           $("#info").append("<p>hhhhhh</p>");                                                              
+         } 
+
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Location found.');
+            infoWindow.open(map);
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      }
+
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      }
+
+
+   
+  </script>
+  </body>
+</html>
